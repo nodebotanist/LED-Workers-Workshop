@@ -1,63 +1,24 @@
-# Solution -- Workers Demo
+# Workshop: Write a Cloudflare Workers function to manipulate LEDs on a Raspberry Pi
+
+Hello! 
+
+If you're reading this, you're hopefully at a workshop. Today, we're going to write a Workers function to manipulate LEDs on a Raspberry Pi.
 
 ## Prerequisites
 
-Install Wrangler:
+1. Node.JS/npm or Rust/Cargo installed (to install [Wrangler](https://github.com/cloudflare/wrangler))
+2. A [workers.dev](https://workers.dev) subdomain
+
+## Getting started
+
+Install Wrangler if you haven't already with `npm i wrangler` or `cargo install wrangler` (npm is recommended as it dispenses a precompiled Rust binary, while cargo builds the library on demand)
+
+Run the following to clone the incomplete Workers function template and initialize your Wrangler project:
 
 ```
-cargo install wrangler
+wrangler generate myWorker https://github.com/nodebotanist/LED-Workers-Workshop
 ```
 
-or
+This will create a folder `myWorker` in the directory you ran it in. `cd` into it and open `index.js` in your favorite code editor.
 
-```
-npm i -g @cloudflare/wrangler
-```
 
-Create a template using this repo
-
-```
-wrangler generate color-worker https://github.com/nodebotanist/connect-led-demo
-```
-
-Go into the solution folder
-
-```
-cd color-bot/solution/bot-demo
-```
-
-Create a `wrangler.toml` file in the folder using
-
-```
-wrangler init
-```
-
-(if you don't have a workers.dev subdomain) register for a workers.dev subdomain
-
-```
-wrangler subdomain
-```
-
-Follow the [Configuration and Deploy Steps in the Docs](https://workers.cloudflare.com/docs/quickstart/configuring-and-publishing/)
-
-change the `color` value to any of the following:
-
-```
-color: {r:(0-255), g:(0-255), b:(0-255)}
-color: {h:(0-255), s:(0-255), v:(0-255)}
-color: {color:"(#FFFFFF style color or color name like 'cornflowerblue')}
-```
-
-THen, to see your color on the Pi
-
-```
-wrangler publsh
-```
-
-or
-
-```
-wrangler preview
-```
-
-if you'd like a little more control.
