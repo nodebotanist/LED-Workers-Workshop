@@ -18,17 +18,17 @@ Install Wrangler if you haven't already with `npm i wrangler` or `cargo install 
 Run the following to clone the incomplete Workers function template and initialize your Wrangler project:
 
 ```
-wrangler generate myWorker https://git.io/fjiHy
+wrangler generate colorWorker https://github.com/nodebotanist/LED-Workers-Workshop.git
 ```
 
-This will create a folder `myWorker` in the directory you ran it in. `cd` into it and open `index.js` in your favorite code editor.
+This will create a folder `colorWorker` in the directory you ran it in. `cd` into it and open `index.js` in your favorite code editor.
 
 ## Creating a wrangler.toml
 
 create a `wrangler.toml` file that contains the following:
 
 ```
-name = "workers-demo"
+name = "color"
 type = "webpack"
 private = false
 account_id = "YOUR_ACCOUNT_ID"

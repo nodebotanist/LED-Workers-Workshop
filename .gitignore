@@ -62,3 +62,4 @@ typings/
 
 # Wrangler
 wrangler.toml
+worker/
