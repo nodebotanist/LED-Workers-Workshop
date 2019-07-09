@@ -10,19 +10,14 @@ addEventListener("fetch", event => {
 async function handleRequest(request) {
   // set payload for our color
   let jwt;
-  let ourColor = JSON.stringify({ color: "cornflowerblue" });
-  console.log(ourColor);
+  let ourColor = JSON.stringify({});
   // get JWT for our payload
-  jwt = await fetch("https://jwt-dispenser.kas.workers.dev", {
-    method: "POST",
-    body: ourColor
-  }).then(response => response.text().then(token => (jwt = token)));
+  jwt = await fetch("", {})
+  jwt = await jwt.text()
   console.log(jwt);
   // use it to add the color to the bot!
-  await fetch("https://color-queue.kas.workers.dev", {
-    method: "POST",
+  await fetch("", {
     headers: {
-      Authorization: "Bearer " + jwt
     }
   });
   return new Response("Color added!", { status: 200 });
