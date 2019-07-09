@@ -1,6 +1,8 @@
 # Workshop: Write a Cloudflare Workers function to manipulate LEDs on a Raspberry Pi
 
-Hello! 
+**Shortened Link:** https://git.io/fjiHy
+
+Hello!
 
 If you're reading this, you're hopefully at a workshop. Today, we're going to write a Workers function to manipulate LEDs on a Raspberry Pi.
 
@@ -16,9 +18,38 @@ Install Wrangler if you haven't already with `npm i wrangler` or `cargo install 
 Run the following to clone the incomplete Workers function template and initialize your Wrangler project:
 
 ```
-wrangler generate myWorker https://github.com/nodebotanist/LED-Workers-Workshop
+wrangler generate myWorker https://git.io/fjiHy
 ```
 
 This will create a folder `myWorker` in the directory you ran it in. `cd` into it and open `index.js` in your favorite code editor.
 
+## Creating a wrangler.toml
 
+create a `wrangler.toml` file that contains the following:
+
+```
+name = "workers-demo"
+type = "webpack"
+private = false
+account_id = "YOUR_ACCOUNT_ID"
+```
+
+`YOUR_ACCOUNT_ID` can be obtained on the right side of the dashboard when you log in with the email you used to register for workers.dev.
+
+## API Endpoints
+
+### POST https://jwt-dispenser.kas.workers.dev
+
+Accepts: a JSON object with either:
+
+* a `color` property that is any CSS color name
+* `r`, `g`, and `b` properties, all between 0-256, representing red, green, and blue values
+* `h`, `s`, and `v` properties; `h` between 0 and 364, `s` between 0 and 100, and `v` between 0 and 100, representing hue, saturation, and value.
+
+Returns: A JWT signed with a secret and the color you sent in the payload
+
+### POST https://color-queue.kas.workers.dev
+
+Required: an `Authorization` header with `Bearer: ` and a JWT from the previous endpoint.
+
+Places the color in the queue to be shown and returns a response of 200 if successful

@@ -12,13 +12,12 @@ async function handleRequest(request) {
   let jwt;
   let ourColor = JSON.stringify({});
   // get JWT for our payload
-  jwt = await fetch("", {})
-  jwt = await jwt.text()
+  jwt = await fetch("", {});
+  jwt = await jwt.text();
   console.log(jwt);
   // use it to add the color to the bot!
   await fetch("", {
-    headers: {
-    }
+    headers: {}
   });
   return new Response("Color added!", { status: 200 });
 }
